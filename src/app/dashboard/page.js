@@ -4,5 +4,5 @@ import { LanguageContext } from "@/app/LanguageContext";
 
 export default function Dashboard() {
   const language = useContext(LanguageContext);
-  return <h1>{language === "ch" ? "ch" : "en"}</h1>;
+  return <h1>language:{language === "ch" ? "ch" : "en"}</h1>;
 }
