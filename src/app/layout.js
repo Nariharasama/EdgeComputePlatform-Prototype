@@ -3,11 +3,14 @@ import { StyledEngineProvider } from "@mui/material/styles";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import ThemeContextProvider from "./theme";
+
+export const viewport = {
+  width: "1024px",
+  initialScale: 1,
+  maximumScale: 1,
+};
 export const metadata = {
   title: "Prototype",
-  viewport: "width=720px,initial-scale=1",
-  formatDetection: "telephone=no,email=no,address=no",
-  charset: "UTF-8",
 };
 
 export default function RootLayout({ children }) {
