@@ -6,10 +6,6 @@ import { useRouter } from "next/navigation";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useContext } from "react";
-import {
-  LanguageContext,
-  LanguageDispatchContext,
-} from "@/app/LanguageContext";
 import { themeContext, themeDispatchContext } from "@/app/theme";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -33,10 +29,9 @@ function Privacy() {
 
 function CardWords() {
   const router = useRouter();
-  const language = useContext(LanguageContext);
-  const dispatch = useContext(LanguageDispatchContext);
+  const dispatch = useContext(themeDispatchContext);
   const theme = useContext(themeContext);
-  const themeDispatch = useContext(themeDispatchContext);
+  const language = theme.language;
   return (
     <React.Fragment>
       <CardContent>
@@ -67,7 +62,7 @@ function CardWords() {
             >
               <Button
                 color="primary"
-                onClick={() => router.push("./dashboard")}
+                onClick={() => router.push("./pcview/dashboard")}
                 disableRipple
                 className={"normal-case h-[32px]"}
               >
@@ -87,7 +82,7 @@ function CardWords() {
                 className={"h-[32px]"}
                 onChange={(event, newtheme) => {
                   if (newtheme !== null) {
-                    themeDispatch({ type: newtheme });
+                    dispatch({ type: "mode", content: newtheme });
                   }
                 }}
                 exclusive
@@ -121,7 +116,7 @@ function CardWords() {
                 className={"h-[32px]"}
                 onChange={(event, newLanguage) => {
                   if (newLanguage !== null) {
-                    dispatch({ type: newLanguage });
+                    dispatch({ type: "language", content: newLanguage });
                   }
                 }}
                 exclusive

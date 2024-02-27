@@ -12,28 +12,59 @@ const themecore = createTheme({
 const initialtheme = {
   themeName: "light",
   core: themecore,
+  language: "ch",
 };
+
 export const themeContext = createContext(null);
 export const themeDispatchContext = createContext(null);
-function themeRuducer(CurrentTheme, action) {
+function themeRuducer(currentTheme, action) {
   switch (action.type) {
-    case "light": {
-      return {
-        themeName: "light",
-        core: createTheme({
-          typography: { fontFamily: notoSans.style.fontFamily },
-          palette: { mode: "light" },
-        }),
-      };
+    //change mode
+    case "mode": {
+      switch (action.content) {
+        //light mode reducer
+        case "light": {
+          return {
+            ...currentTheme,
+            themeName: "light",
+            core: createTheme({
+              typography: { fontFamily: notoSans.style.fontFamily },
+              palette: { mode: "light" },
+            }),
+          };
+        }
+        //dark mode reducer
+        case "dark": {
+          return {
+            ...currentTheme,
+            themeName: "dark",
+            core: createTheme({
+              typography: { fontFamily: notoSans.style.fontFamily },
+              palette: { mode: "dark" },
+            }),
+          };
+        }
+      }
+      break;
     }
-    case "dark": {
-      return {
-        themeName: "dark",
-        core: createTheme({
-          typography: { fontFamily: notoSans.style.fontFamily },
-          palette: { mode: "dark" },
-        }),
-      };
+    //change language
+    case "language": {
+      switch (action.content) {
+        //To Chinese
+        case "ch": {
+          return {
+            ...currentTheme,
+            language: "ch",
+          };
+        }
+        //to English
+        case "en": {
+          return {
+            ...currentTheme,
+            language: "en",
+          };
+        }
+      }
     }
     default: {
       throw Error("Not supported theme option.");
@@ -42,6 +73,7 @@ function themeRuducer(CurrentTheme, action) {
 }
 
 //theme themeNavi(dispatch)
+
 export default function ThemeContextProvider({ children }) {
   const [theme, themeNavi] = useReducer(themeRuducer, initialtheme);
   return (
