@@ -6,7 +6,7 @@ import { Brightness4, Translate, Cached, Settings } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import { useRouter } from "next/navigation";
 
-export default function Dashboard({ children }) {
+export default function NavigationButton({ children, target }) {
   const dispatch = useContext(themeDispatchContext);
   const theme = useContext(themeContext);
   const language = theme.language;
@@ -16,17 +16,20 @@ export default function Dashboard({ children }) {
       <SpeedDial
         ariaLabel="SpeedDial basic example"
         sx={{ position: "absolute", bottom: 16, right: 16 }}
-        icon={<Settings />}
+        icon={
+          <Settings />
+          //Navigator of Language, device and Darkmode
+        }
       >
         <SpeedDialAction
           key="Mode"
           icon=<Brightness4 />
-          onClick={() =>
+          onClick={() => {
             dispatch({
               type: "mode",
               content: theme.themeName === "dark" ? "light" : "dark",
-            })
-          }
+            });
+          }}
           tooltipTitle={language === "ch" ? "模式" : "Mode"}
         />
         <SpeedDialAction
@@ -46,7 +49,7 @@ export default function Dashboard({ children }) {
           tooltipTitle={language === "ch" ? "切换设备" : "Device"}
           onClick={() => {
             //Changing in devices
-            router.push("../pcview/dashboard");
+            router.push("../" + target);
           }}
         />
       </SpeedDial>

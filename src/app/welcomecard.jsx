@@ -1,12 +1,19 @@
 "use client";
-import * as React from "react";
-import { CardActions, CardContent, Alert, AlertTitle } from "@mui/material";
-import { Button, Grid, Typography, Card } from "@mui/material";
 import { useRouter } from "next/navigation";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useContext } from "react";
 import { themeContext, themeDispatchContext } from "@/app/theme";
+import * as React from "react";
+import {
+  Alert,
+  AlertTitle,
+  Button,
+  CardActions,
+  CardContent,
+  Grid,
+  Typography,
+} from "@mui/material";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import ToggleButton from "@mui/material/ToggleButton";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 
@@ -26,8 +33,7 @@ function Privacy() {
     </div>
   );
 }
-
-function CardWords() {
+export default function Welcomecard() {
   const router = useRouter();
   const dispatch = useContext(themeDispatchContext);
   const theme = useContext(themeContext);
@@ -138,23 +144,5 @@ function CardWords() {
         </CardActions>
       </CardContent>
     </React.Fragment>
-  );
-}
-
-export default function Home() {
-  return (
-    <Grid container className={"h-[600px]"}>
-      <Grid
-        item
-        xs={12}
-        display={"flex"}
-        justifyContent={"center"}
-        alignItems={"center"}
-      >
-        <Card variant={"outlined"} className={"w-[720px] h-[280px]"}>
-          <CardWords />
-        </Card>
-      </Grid>
-    </Grid>
   );
 }
