@@ -48,11 +48,11 @@ export default function Dashboard() {
               更多提示请至设置-技术支持与帮助。
             </Typography>
             <Card
-              className={"top-[160px] left-[16px] absolute w-[600px] h-[145px]"}
+              className={"top-[160px] left-[16px] absolute w-[600px] h-[120px]"}
               variant={"outlined"}
             >
               <CardContent>
-                <Box className={"h-[84px]"}>
+                <Box className={"h-[64px]"}>
                   <Stack
                     direction={"row"}
                     justifyContent={"space-between"}
@@ -90,11 +90,11 @@ export default function Dashboard() {
               </CardContent>
             </Card>
             <Card
-              className={"top-[320px] left-[16px] absolute w-[600px] h-[280px]"}
+              className={"top-[300px] left-[16px] absolute w-[600px] h-[260px]"}
               variant={"outlined"}
             >
               <CardContent>
-                <Box className={"h-[84px]"}>
+                <Box className={"h-[64px]"}>
                   <Stack
                     direction={"row"}
                     justifyContent={"space-between"}

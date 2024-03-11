@@ -9,7 +9,7 @@ export default function Topbar() {
   return (
     <Box
       sx={{ borderBottom: 1, width: "0.5px", borderColor: "grey.500" }}
-      className={"w-full h-[56px] flex"}
+      className={"w-full h-[48px] flex"}
       alignItems={"center"}
     >
       <Grid
@@ -42,12 +42,12 @@ export default function Topbar() {
           justifyContent={"right"}
         >
           <IconButton
-            size={"medium"}
+            size={"small"}
             onClick={() => alert("该操作将最小化窗口")}
           >
             <RemoveIcon />
           </IconButton>
-          <IconButton onClick={() => alert("该操作将关闭窗口")}>
+          <IconButton onClick={() => alert("该操作将关闭窗口")} size={"small"}>
             <CloseIcon />
           </IconButton>
           <Box className={"w-[6px] flex"}></Box>
