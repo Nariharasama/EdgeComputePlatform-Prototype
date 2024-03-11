@@ -12,7 +12,7 @@ export default function NavigationButton({ children, target }) {
   const language = theme.language;
   const router = useRouter();
   return (
-    <Box className={"h-[100%]"}>
+    <Box className={"h-screen"}>
       <SpeedDial
         ariaLabel="SpeedDial basic example"
         sx={{ position: "absolute", bottom: 16, right: 16 }}

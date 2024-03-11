@@ -65,6 +65,7 @@ function themeRuducer(currentTheme, action) {
           };
         }
       }
+      break;
     }
     default: {
       throw Error("Not supported theme option.");
