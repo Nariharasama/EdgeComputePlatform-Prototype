@@ -164,40 +164,32 @@ function EventTable() {
     createData("Eventname_Default03", "DeviceName01", "202403111838"),
   ];
   return (
-    <Paper className={"h-[160px] w-full overflow-scroll"}>
-      <TableContainer component={Paper}>
-        <Table aria-label="simple table" stickyHeader>
+    <Box className={"h-[160px] w-[560px] fixed"}>
+      <TableContainer sx={{ maxHeight: 160 }}>
+        <Table aria-label="simple table" className={"h-full"} stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell>事件名称</TableCell>
-              <TableCell align="right">设备名称</TableCell>
+              <TableCell align="left">设备名称</TableCell>
               <TableCell align="right">触发时间</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <TableRow
-                hover
-                role="checkbox"
-                tabIndex={-1}
-                key={row.name}
-                sx={{
-                  "&:last-child td, &:last-child th": { border: 0 },
-                }}
-              >
+              <TableRow hover role="checkbox" tabIndex={-1} key={row.name}>
                 <TableCell component="th" scope="row">
                   <Stack direction={"row"} alignItems={"center"}>
                     <WarningIcon color={"warning"} fontSize={"small"} />
                     {row.name}
                   </Stack>
                 </TableCell>
-                <TableCell align="right">{row.device}</TableCell>
+                <TableCell align="left">{row.device}</TableCell>
                 <TableCell align="right">{row.time}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
+    </Box>
   );
 }
