@@ -3,12 +3,8 @@ import NavigationButton from "@/app/navigation-button";
 import {
   Box,
   Button,
-  Card,
-  CardContent,
   Checkbox,
-  IconButton,
   InputAdornment,
-  Link,
   MenuItem,
   Stack,
   Table,
@@ -29,7 +25,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import AddIcon from "@mui/icons-material/Add";
-import { router } from "next/client";
 
 export default function Data() {
   const [select, setSelect] = useState(0);
@@ -65,7 +60,7 @@ export default function Data() {
                 justifyContent={"right"}
               >
                 <TextField
-                  id="outlined-basic"
+                  id="1"
                   label="搜索设备"
                   variant="outlined"
                   InputProps={{
@@ -107,7 +102,7 @@ export default function Data() {
               </Stack>
             </Box>
             <Box className={"w-full grow h-[200px]"}>
-              <DataTable handleselect={setSelect} />
+              <DataTable handleselect={setSelect} route={router} />
             </Box>
             <Box
               className={"h-[56px] w-full flex"}
@@ -142,8 +137,8 @@ export default function Data() {
   );
 }
 
-function DataTable({ handleselect }) {
-  const router = useRouter();
+function DataTable({ handleselect, route }) {
+  const router = route;
   function createData(id, name, status, type) {
     return { id, name, status, type };
   }
