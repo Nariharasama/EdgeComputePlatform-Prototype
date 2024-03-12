@@ -26,12 +26,13 @@ import WarningIcon from "@mui/icons-material/Warning";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useState } from "react";
 export default function Dashboard() {
+  const placer = [{ name: "主页", link: "./dashboard" }];
   return (
     <NavigationButton target={"edgeview"}>
       <Stack className={"h-full flex"} direction={"row"}>
         <Sidebar page={1}></Sidebar>
         <Box className={"h-full w-full"}>
-          <Topbar />
+          <Topbar place={placer} />
           <Box className={"w-full relative"}>
             <Typography
               className={"top-[32px] left-[16px] absolute"}

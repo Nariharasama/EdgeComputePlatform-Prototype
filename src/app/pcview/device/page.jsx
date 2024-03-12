@@ -25,18 +25,20 @@ import Topbar from "@/app/pcview/topbar";
 import WarningIcon from "@mui/icons-material/Warning";
 import SearchIcon from "@mui/icons-material/Search";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import AddIcon from "@mui/icons-material/Add";
+import { router } from "next/client";
 
 export default function Data() {
   const [select, setSelect] = useState(0);
-  const placer = [{ name: "数据管理", link: "./data" }];
+  const placer = [{ name: "设备管理", link: "./device" }];
+  const router = useRouter();
   return (
     <NavigationButton target={"edgeview"}>
       <Box className={"h-full w-full flex"}>
-        <Sidebar page={3}></Sidebar>
+        <Sidebar page={2}></Sidebar>
         <Box className={"h-full w-full flex flex-col"}>
           <Topbar place={placer} />
           <Stack className={"w-full flex  grow flex-col"} direction={"column"}>
@@ -48,10 +50,10 @@ export default function Data() {
                   className={"h-[48px] w-full text-left flex-none"}
                   variant={"h4"}
                 >
-                  数据管理
+                  设备管理
                 </Typography>
                 <Typography className={"h-[40px] flex-none"} variant={"body1"}>
-                  查看由边缘端上传的数据记录，管理并导出相关图表。
+                  管理边缘设备查看设备工作状态并进行相关设定。
                 </Typography>
               </Box>
             </Stack>
@@ -64,7 +66,7 @@ export default function Data() {
               >
                 <TextField
                   id="outlined-basic"
-                  label="搜索数据"
+                  label="搜索设备"
                   variant="outlined"
                   InputProps={{
                     startAdornment: (
@@ -77,7 +79,7 @@ export default function Data() {
                 <TextField
                   select
                   id="2"
-                  label="选择设备"
+                  label="筛选"
                   variant="outlined"
                   InputProps={{
                     startAdornment: (
@@ -89,38 +91,22 @@ export default function Data() {
                   className={"w-[200px]"}
                 >
                   <MenuItem key="devicename" value="devicename">
-                    设备名称
-                  </MenuItem>
-                </TextField>
-                <TextField
-                  select
-                  id="3"
-                  label="排序方式"
-                  variant="outlined"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <FilterAltIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                  className={"w-[200px]"}
-                  defaultValue="1"
-                >
-                  <MenuItem key="1" value="1">
-                    时间从新到旧
-                  </MenuItem>
-                  <MenuItem key="2" value="2">
-                    时间从旧到新
-                  </MenuItem>
-                  <MenuItem key="3" value="3">
                     设备类型
                   </MenuItem>
                 </TextField>
+                <Button
+                  variant={"text"}
+                  color={"primary"}
+                  endIcon={<AddIcon />}
+                  disableRipple
+                  onClick={() => router.push("device/add")}
+                >
+                  添加设备
+                </Button>
                 <Box className={"w-[16px] h-full"}></Box>
               </Stack>
             </Box>
-            <Box className={"w-full grow h-[200px] flex"}>
+            <Box className={"w-full grow h-[200px]"}>
               <DataTable handleselect={setSelect} />
             </Box>
             <Box
@@ -135,21 +121,14 @@ export default function Data() {
               >
                 <Box className={"w-[16px]"}></Box>
                 <Typography variant={"body1"}>
-                  批量操作：已选择{select}条数据
+                  批量操作：已选择{select}个设备
                 </Typography>
                 <Box className={"grow"}></Box>
                 <Button
                   variant={"text"}
-                  endIcon={<SaveAltIcon />}
-                  onClick={() => alert("该操作将下载数据文件")}
-                >
-                  批量导出
-                </Button>
-                <Button
-                  variant={"text"}
                   color={"error"}
                   endIcon={<CloseIcon />}
-                  onClick={() => alert("该操作将删除数据文件")}
+                  onClick={() => alert("该操作将删除设备")}
                 >
                   批量删除
                 </Button>
@@ -165,31 +144,14 @@ export default function Data() {
 
 function DataTable({ handleselect }) {
   const router = useRouter();
-  function createData(id, name, time, device, privacy, select) {
-    return { id, name, time, device, privacy, select };
+  function createData(id, name, status, type) {
+    return { id, name, status, type };
   }
 
   const rows = [
-    createData(0, "Data_Name01", "202403111838", "DeviceName01", 1, 0),
-    createData(1, "Data_Name01", "202403111838", "DeviceName01", 1, 0),
-    createData(2, "Data_Name02", "202403121930", "DeviceName02", 1, 0),
-    createData(
-      3,
-      "Data_Name01_NoAccess",
-      "202403111838",
-      "DeviceName01_NoAccess",
-      0,
-      0,
-    ),
-    createData(
-      4,
-      "Data_Name01_NoAccess",
-      "202403111838",
-      "DeviceName01_NoAccess",
-      0,
-      0,
-    ),
-    createData(5, "Data_Name01", "202403111838", "DeviceName01s", 1, 0),
+    createData(0, "Device_Name", "正常", "DeviceType1"),
+    createData(1, "Device_Name", "离线", "DeviceType1"),
+    createData(2, "Device_Name", "正常", "DeviceType1"),
   ];
   var selectcontet = [];
   var selectnum = 0;
@@ -205,10 +167,10 @@ function DataTable({ handleselect }) {
   handleselect(selectnum);
   return (
     <Box className={"h-full w-full overflow-hidden"}>
-      <TableContainer sx={{ maxHeight: 1 }}>
-        <Table aria-label="simple table" stickyHeader>
-          <TableHead>
-            <TableRow>
+      <TableContainer sx={{ maxHeight: 1, width: 1 }}>
+        <Table aria-label="simple table" stickyHeader className={"w-full"}>
+          <TableHead className={"w-full"}>
+            <TableRow className={"w-full"}>
               <TableCell padding="checkbox">
                 <Checkbox
                   color="primary"
@@ -221,9 +183,9 @@ function DataTable({ handleselect }) {
                   }}
                 />
               </TableCell>
-              <TableCell align="left">数据名称</TableCell>
-              <TableCell align="left">上传时间</TableCell>
-              <TableCell align="left">上传设备</TableCell>
+              <TableCell align="left">设备名称</TableCell>
+              <TableCell align="left">设备状态</TableCell>
+              <TableCell align="left">设备类型</TableCell>
               <TableCell align="left">操作</TableCell>
             </TableRow>
           </TableHead>
@@ -247,11 +209,9 @@ function DataTable({ handleselect }) {
                     }}
                   />
                 </TableCell>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="left">{row.device}</TableCell>
-                <TableCell align="left">{row.time}</TableCell>
+                <TableCell align="left">{row.name}</TableCell>
+                <TableCell align="left">{row.status}</TableCell>
+                <TableCell align="left">{row.type}</TableCell>
                 <TableCell align="left">
                   <Stack
                     direction={"row"}
@@ -259,7 +219,7 @@ function DataTable({ handleselect }) {
                     className={"flex h-full"}
                     alignItems={"center"}
                   >
-                    {row.privacy === 1 ? (
+                    {row.status === "正常" ? (
                       <Button
                         variant={"text"}
                         color={"primary"}
@@ -280,20 +240,26 @@ function DataTable({ handleselect }) {
                         查看
                       </Button>
                     )}
-
-                    {row.privacy === 1 ? (
-                      <Button variant={"text"} color={"primary"} disableRipple>
-                        导出
-                      </Button>
-                    ) : (
-                      <Button variant={"text"} disabled disableRipple>
-                        导出
-                      </Button>
-                    )}
+                    <Button
+                      variant={"text"}
+                      color={"primary"}
+                      disableRipple
+                      onClick={() => router.push("./data/dataname-withaccess")}
+                    >
+                      权限
+                    </Button>
+                    <Button
+                      variant={"text"}
+                      color={"primary"}
+                      disableRipple
+                      onClick={() => router.push("./data/dataname-withaccess")}
+                    >
+                      规则
+                    </Button>
                     <Button variant={"text"} color={"error"} disableRipple>
                       删除
                     </Button>
-                    {row.privacy === 0 ? (
+                    {row.status === "离线" && (
                       <Stack
                         direction={"row"}
                         className={"h-full"}
@@ -302,11 +268,9 @@ function DataTable({ handleselect }) {
                       >
                         <WarningIcon color={"error"} />
                         <Typography color={"error"} variant={"body2"}>
-                          没有权限
+                          设备离线
                         </Typography>
                       </Stack>
-                    ) : (
-                      <></>
                     )}
                   </Stack>
                 </TableCell>

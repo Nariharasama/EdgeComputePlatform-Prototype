@@ -4,8 +4,10 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import CloseIcon from "@mui/icons-material/Close";
 import Grid from "@mui/material/Unstable_Grid2";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { useRouter } from "next/navigation";
 
-export default function Topbar() {
+export default function Topbar({ place }) {
+  const router = useRouter();
   return (
     <Box
       sx={{ borderBottom: 1, width: "0.5px", borderColor: "grey.500" }}
@@ -31,7 +33,15 @@ export default function Topbar() {
             aria-label="breadcrumb"
             className={"flex"}
           >
-            <Typography>主页</Typography>
+            {place.map((c, i) => (
+              <Typography
+                onClick={() => router.push(c.link)}
+                key={i}
+                className={"cursor-pointer hover:underline"}
+              >
+                {c.name}
+              </Typography>
+            ))}
           </Breadcrumbs>
         </Grid>
         <Grid xs></Grid>
