@@ -15,7 +15,7 @@ export default function NavigationButton({ children, target }) {
     <Box className={"h-screen"}>
       <SpeedDial
         ariaLabel="SpeedDial basic example"
-        sx={{ position: "absolute", bottom: 16, right: 16 }}
+        sx={{ position: "absolute", bottom: 128, right: 16 }}
         icon={
           <Settings />
           //Navigator of Language, device and Darkmode

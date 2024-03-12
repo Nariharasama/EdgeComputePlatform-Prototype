@@ -162,11 +162,15 @@ function EventTable() {
     createData("Eventname_Default01", "DeviceName01", "202403111838"),
     createData("Eventname_Default02", "DeviceName01", "202403111838"),
     createData("Eventname_Default03", "DeviceName01", "202403111838"),
+    createData("Eventname_Default03", "DeviceName01", "202403111838"),
+    createData("Eventname_Default03", "DeviceName01", "202403111838"),
+    createData("Eventname_Default03", "DeviceName01", "202403111838"),
+    createData("Eventname_Default03", "DeviceName01", "202403111838"),
   ];
   return (
-    <Box className={"h-[160px] w-[560px] fixed"}>
-      <TableContainer sx={{ maxHeight: 160 }}>
-        <Table aria-label="simple table" className={"h-full"} stickyHeader>
+    <Box className={"h-[160px] w-[560px]"}>
+      <TableContainer sx={{ maxHeight: 1 }}>
+        <Table aria-label="simple table" stickyHeader>
           <TableHead>
             <TableRow>
               <TableCell>事件名称</TableCell>
