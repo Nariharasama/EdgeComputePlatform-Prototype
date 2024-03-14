@@ -66,6 +66,7 @@ export default function Data() {
                   id="outlined-basic"
                   label="搜索数据"
                   variant="outlined"
+                  size={"small"}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -79,6 +80,7 @@ export default function Data() {
                   id="2"
                   label="选择设备"
                   variant="outlined"
+                  size={"small"}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -97,6 +99,7 @@ export default function Data() {
                   id="3"
                   label="排序方式"
                   variant="outlined"
+                  size={"small"}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">

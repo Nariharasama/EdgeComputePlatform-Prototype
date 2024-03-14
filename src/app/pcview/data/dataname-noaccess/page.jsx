@@ -16,8 +16,10 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import { BarChart, LineChart } from "@mui/x-charts";
 import * as React from "react";
+import { useRouter } from "next/navigation";
 
 export default function DataWithAceess() {
+  const router = useRouter();
   const placer = [
     { name: "数据管理", link: "../data" },
     { name: "数据详情DataName(no access)", link: "./data/dataname-noaccess" },
@@ -59,7 +61,7 @@ export default function DataWithAceess() {
                 <Button
                   variant={"text"}
                   endIcon={<OpenInNewIcon />}
-                  onClick={() => alert("该操作将删除数据文件")}
+                  onClick={() => router.push("pcview/device")}
                 >
                   设备详情
                 </Button>

@@ -18,7 +18,7 @@ export default function NotFound() {
           action={
             <Button
               color="error"
-              onClick={() => router.push("./")}
+              onClick={() => router.push("/")}
               disableRipple
               className={"normal-case"}
             >

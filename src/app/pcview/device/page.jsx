@@ -28,7 +28,7 @@ import AddIcon from "@mui/icons-material/Add";
 
 export default function Data() {
   const [select, setSelect] = useState(0);
-  const placer = [{ name: "设备管理", link: "./device" }];
+  const placer = [{ name: "设备管理", link: "/device" }];
   const router = useRouter();
   return (
     <NavigationButton target={"edgeview"}>
@@ -52,7 +52,11 @@ export default function Data() {
                 </Typography>
               </Box>
             </Stack>
-            <Box className={"w-full h-[60px] flex-none"}>
+            <Box
+              className={"w-full h-[60px] flex-none"}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
               <Stack
                 direction={"row"}
                 spacing={2}
@@ -63,6 +67,7 @@ export default function Data() {
                   id="1"
                   label="搜索设备"
                   variant="outlined"
+                  size={"small"}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -76,6 +81,7 @@ export default function Data() {
                   id="2"
                   label="筛选"
                   variant="outlined"
+                  size={"small"}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -86,7 +92,7 @@ export default function Data() {
                   className={"w-[200px]"}
                 >
                   <MenuItem key="devicename" value="devicename">
-                    设备类型
+                    设备ID
                   </MenuItem>
                 </TextField>
                 <Button
@@ -144,9 +150,9 @@ function DataTable({ handleselect, route }) {
   }
 
   const rows = [
-    createData(0, "Device_Name", "正常", "DeviceType1"),
-    createData(1, "Device_Name", "离线", "DeviceType1"),
-    createData(2, "Device_Name", "正常", "DeviceType1"),
+    createData(0, "Device_Name", "正常", "DeviceID0001"),
+    createData(1, "Device_Name", "离线", "DeviceID0002"),
+    createData(2, "Device_Name", "正常", "DeviceID0003"),
   ];
   var selectcontet = [];
   var selectnum = 0;
@@ -180,7 +186,7 @@ function DataTable({ handleselect, route }) {
               </TableCell>
               <TableCell align="left">设备名称</TableCell>
               <TableCell align="left">设备状态</TableCell>
-              <TableCell align="left">设备类型</TableCell>
+              <TableCell align="left">设备ID</TableCell>
               <TableCell align="left">操作</TableCell>
             </TableRow>
           </TableHead>
@@ -219,9 +225,7 @@ function DataTable({ handleselect, route }) {
                         variant={"text"}
                         color={"primary"}
                         disableRipple
-                        onClick={() =>
-                          router.push("./data/dataname-withaccess")
-                        }
+                        onClick={() => router.push("/pcview/device/info")}
                       >
                         查看
                       </Button>
@@ -231,6 +235,7 @@ function DataTable({ handleselect, route }) {
                         color={"primary"}
                         onClick={() => router.push("./data/dataname-noaccess")}
                         disableRipple
+                        disabled
                       >
                         查看
                       </Button>

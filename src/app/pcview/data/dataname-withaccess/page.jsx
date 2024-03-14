@@ -8,8 +8,10 @@ import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import { BarChart, LineChart } from "@mui/x-charts";
+import { useRouter } from "next/navigation";
 
 export default function DataWithAceess() {
+  const router = useRouter();
   const placer = [
     { name: "数据管理", link: "../data" },
     { name: "数据详情DataName", link: "./data/dataname-withaccess" },
@@ -51,14 +53,14 @@ export default function DataWithAceess() {
                 <Button
                   variant={"text"}
                   endIcon={<OpenInNewIcon />}
-                  onClick={() => alert("该操作将删除数据文件")}
+                  onClick={() => router.push("/pcview/device")}
                 >
                   设备详情
                 </Button>
                 <Button
                   variant={"text"}
                   endIcon={<SaveAltIcon />}
-                  onClick={() => alert("该操作将删除数据文件")}
+                  onClick={() => alert("该操作将导出数据文件")}
                 >
                   数据导出
                 </Button>

@@ -140,15 +140,14 @@ function DataTable({ handleselect }) {
     </>
   );
   //sort and choose
-  const router = useRouter();
   function createData(id, name, type) {
     return { id, name, type };
   }
 
   const rows = [
-    createData(0, "Device_Name", "DeviceType1"),
-    createData(1, "Device_Name", "DeviceType2"),
-    createData(2, "Device_Name", "DeviceType3"),
+    createData(0, "Device_Name", "a00121ffa"),
+    createData(1, "Device_Name", "chaasc092e"),
+    createData(2, "Device_Name", "0289dan90"),
   ];
   var selectcontet = [];
   var selectnum = 0;
@@ -181,7 +180,7 @@ function DataTable({ handleselect }) {
                 />
               </TableCell>
               <TableCell align="left">设备名称</TableCell>
-              <TableCell align="left">设备类型</TableCell>
+              <TableCell align="left">设备ID</TableCell>
               <TableCell align="center">操作</TableCell>
             </TableRow>
           </TableHead>

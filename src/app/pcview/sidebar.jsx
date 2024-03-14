@@ -22,7 +22,7 @@ export default function Sidebar({ page }) {
           ) : (
             <HomeIcon
               className={"text-[32px]"}
-              onClick={() => router.push("./dashboard")}
+              onClick={() => router.push("/pcview/dashboard")}
             />
           )}
         </IconButton>
@@ -32,7 +32,7 @@ export default function Sidebar({ page }) {
           ) : (
             <AccountTreeIcon
               className={"text-[32px]"}
-              onClick={() => router.push("./device")}
+              onClick={() => router.push("/pcview/device")}
             />
           )}
         </IconButton>
@@ -42,7 +42,7 @@ export default function Sidebar({ page }) {
           ) : (
             <StorageIcon
               className={"text-[32px]"}
-              onClick={() => router.push("./data")}
+              onClick={() => router.push("/pcview/data")}
             />
           )}
         </IconButton>
@@ -52,7 +52,7 @@ export default function Sidebar({ page }) {
           ) : (
             <SettingsIcon
               className={"text-[32px]"}
-              onClick={() => router.push("./setting")}
+              onClick={() => router.push("/pcview/setting")}
             />
           )}
         </IconButton>
