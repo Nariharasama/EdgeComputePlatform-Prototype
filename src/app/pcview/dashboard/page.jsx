@@ -25,8 +25,10 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import WarningIcon from "@mui/icons-material/Warning";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 export default function Dashboard() {
   const placer = [{ name: "主页", link: "./dashboard" }];
+  const router = useRouter();
   return (
     <NavigationButton target={"edgeview"}>
       <Stack className={"h-full flex"} direction={"row"}>
@@ -142,7 +144,12 @@ export default function Dashboard() {
                 <Stack direction={"column"} spacing={1}>
                   <Link>功能商城</Link>
                   <Link>账号设置</Link>
-                  <Link>新建规则</Link>
+                  <Link
+                    className={"cursor-pointer"}
+                    onClick={() => router.push("/pcview/device/info/rule")}
+                  >
+                    修改规则
+                  </Link>
                   <Link>版本更新</Link>
                   <Link>帮助和支持</Link>
                 </Stack>

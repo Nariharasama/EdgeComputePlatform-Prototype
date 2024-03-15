@@ -28,7 +28,11 @@ import AddIcon from "@mui/icons-material/Add";
 
 export default function Data() {
   const [select, setSelect] = useState(0);
-  const placer = [{ name: "设备管理", link: "/device" }];
+  const placer = [
+    { name: "设备管理", link: "/pcview/device" },
+    { name: "设备详情", link: "/pcview/device/info" },
+    { name: "权限设定", link: "/pcview/device/info/privacy" },
+  ];
   const router = useRouter();
   return (
     <NavigationButton target={"edgeview"}>
@@ -45,10 +49,10 @@ export default function Data() {
                   className={"h-[48px] w-full text-left flex-none"}
                   variant={"h4"}
                 >
-                  设备管理
+                  设备详情
                 </Typography>
                 <Typography className={"h-[40px] flex-none"} variant={"body1"}>
-                  管理边缘设备查看设备工作状态并进行相关设定。
+                  设备ID：A_001asbbk25
                 </Typography>
               </Box>
             </Stack>
@@ -65,7 +69,7 @@ export default function Data() {
               >
                 <TextField
                   id="1"
-                  label="搜索设备"
+                  label="搜索用户ID"
                   variant="outlined"
                   size={"small"}
                   InputProps={{
@@ -76,25 +80,6 @@ export default function Data() {
                     ),
                   }}
                 />
-                <TextField
-                  select
-                  id="2"
-                  label="筛选"
-                  variant="outlined"
-                  size={"small"}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <FilterAltIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                  className={"w-[200px]"}
-                >
-                  <MenuItem key="devicename" value="devicename">
-                    设备ID
-                  </MenuItem>
-                </TextField>
                 <Button
                   variant={"text"}
                   color={"primary"}
@@ -102,7 +87,7 @@ export default function Data() {
                   disableRipple
                   onClick={() => router.push("device/add")}
                 >
-                  添加设备
+                  添加权限许可
                 </Button>
                 <Box className={"w-[16px] h-full"}></Box>
               </Stack>
@@ -145,14 +130,13 @@ export default function Data() {
 
 function DataTable({ handleselect, route }) {
   const router = route;
-  function createData(id, name, status, type) {
-    return { id, name, status, type };
+  function createData(id, name, privacy, userid) {
+    return { id, name, privacy, userid };
   }
 
   const rows = [
-    createData(0, "Device_Name", "正常", "DeviceID0001"),
-    createData(1, "Device_Name", "离线", "DeviceID0002"),
-    createData(2, "Device_Name", "正常", "DeviceID0003"),
+    createData(0, "Administrator", "拥有者", "hushengyua831"),
+    createData(1, "User_Name", "只读", "userid829e"),
   ];
   var selectcontet = [];
   var selectnum = 0;
@@ -184,9 +168,9 @@ function DataTable({ handleselect, route }) {
                   }}
                 />
               </TableCell>
-              <TableCell align="left">设备名称</TableCell>
-              <TableCell align="left">设备状态</TableCell>
-              <TableCell align="left">设备ID</TableCell>
+              <TableCell align="left">用户</TableCell>
+              <TableCell align="left">权限</TableCell>
+              <TableCell align="left">用户ID</TableCell>
               <TableCell align="left">操作</TableCell>
             </TableRow>
           </TableHead>
@@ -211,8 +195,8 @@ function DataTable({ handleselect, route }) {
                   />
                 </TableCell>
                 <TableCell align="left">{row.name}</TableCell>
-                <TableCell align="left">{row.status}</TableCell>
-                <TableCell align="left">{row.type}</TableCell>
+                <TableCell align="left">{row.privacy}</TableCell>
+                <TableCell align="left">{row.userid}</TableCell>
                 <TableCell align="left">
                   <Stack
                     direction={"row"}
@@ -220,23 +204,13 @@ function DataTable({ handleselect, route }) {
                     className={"flex h-full"}
                     alignItems={"center"}
                   >
-                    {row.status === "正常" ? (
-                      <Button
-                        variant={"text"}
-                        color={"primary"}
-                        disableRipple
-                        onClick={() => router.push("/pcview/device/info")}
-                      >
-                        查看
+                    {row.privacy !== "拥有者" ? (
+                      <Button variant={"text"} color={"error"} disableRipple>
+                        删除
                       </Button>
                     ) : (
-                      <Button
-                        variant={"text"}
-                        color={"primary"}
-                        disableRipple
-                        disabled
-                      >
-                        查看
+                      <Button variant={"text"} disabled disableRipple>
+                        删除
                       </Button>
                     )}
                     <Button
@@ -245,32 +219,8 @@ function DataTable({ handleselect, route }) {
                       disableRipple
                       onClick={() => router.push("./data/dataname-withaccess")}
                     >
-                      权限
+                      设置
                     </Button>
-                    <Button
-                      variant={"text"}
-                      color={"primary"}
-                      disableRipple
-                      onClick={() => router.push("/pcview/device/info/rule")}
-                    >
-                      规则
-                    </Button>
-                    <Button variant={"text"} color={"error"} disableRipple>
-                      删除
-                    </Button>
-                    {row.status === "离线" && (
-                      <Stack
-                        direction={"row"}
-                        className={"h-full"}
-                        alignItems={"center"}
-                        justifyContent={"center"}
-                      >
-                        <WarningIcon color={"error"} />
-                        <Typography color={"error"} variant={"body2"}>
-                          设备离线
-                        </Typography>
-                      </Stack>
-                    )}
                   </Stack>
                 </TableCell>
               </TableRow>

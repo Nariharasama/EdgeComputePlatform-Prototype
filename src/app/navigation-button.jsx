@@ -23,7 +23,7 @@ export default function NavigationButton({ children, target }) {
       >
         <SpeedDialAction
           key="Mode"
-          icon=<Brightness4 />
+          icon={<Brightness4 />}
           onClick={() => {
             dispatch({
               type: "mode",

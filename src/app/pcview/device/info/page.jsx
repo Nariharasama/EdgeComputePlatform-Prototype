@@ -132,28 +132,28 @@ export default function Data() {
                   <Button
                     variant={"text"}
                     startIcon={<LockOutlinedIcon />}
-                    onClick={() => alert("该操作将删除设备")}
+                    onClick={() => router.push("/pcview/device/info/privacy")}
                   >
                     权限设置
                   </Button>
                   <Button
                     variant={"text"}
                     startIcon={<SettingsIcon />}
-                    onClick={() => alert("该操作将删除设备")}
+                    onClick={() => router.push("/pcview/device/info/rule")}
                   >
                     规则设置
                   </Button>
                   <Button
                     variant={"text"}
                     startIcon={<OpenInNewIcon />}
-                    onClick={() => alert("该操作将删除设备")}
+                    onClick={() => router.push("/pcview/data")}
                   >
                     数据记录
                   </Button>
                   <Button
                     variant={"text"}
                     startIcon={<DateRangeOutlinedIcon />}
-                    onClick={() => alert("该操作将删除设备")}
+                    onClick={() => router.push("/pcview/device/info/event")}
                   >
                     事件记录
                   </Button>
