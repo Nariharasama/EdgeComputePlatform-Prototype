@@ -243,7 +243,7 @@ function DataTable({ handleselect, route }) {
                       variant={"text"}
                       color={"primary"}
                       disableRipple
-                      onClick={() => router.push("./data/dataname-withaccess")}
+                      onClick={() => router.push("/pcview/device/info/privacy")}
                     >
                       权限
                     </Button>
