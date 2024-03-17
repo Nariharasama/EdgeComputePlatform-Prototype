@@ -67,7 +67,7 @@ export default function DataWithAceess() {
                 <Button
                   variant={"text"}
                   endIcon={<InfoOutlinedIcon />}
-                  onClick={() => alert("该操作将删除数据文件")}
+                  onClick={() => router.push("/pcview/device/info/privacy")}
                 >
                   权限设置
                 </Button>

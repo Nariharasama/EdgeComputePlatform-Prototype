@@ -136,7 +136,7 @@ export default function Rule() {
                   className={"h-[48px] w-full text-left flex-none"}
                   variant={"h4"}
                 >
-                  设备详情-规则设置
+                  规则设置
                 </Typography>
                 <Typography className={"h-[40px] flex-none"} variant={"body1"}>
                   设备ID：A_001asbbk25

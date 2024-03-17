@@ -64,11 +64,15 @@ export default function Sidebar({ page }) {
           horizontal: "right",
         }}
         color={"error"}
-        badgeContent=" "
         variant="dot"
         overlap="circular"
       >
-        <Avatar>HU</Avatar>
+        <Avatar
+          onClick={() => router.push("/pcview/setting/account")}
+          className={"cursor-pointer"}
+        >
+          HU
+        </Avatar>
       </Badge>
       <Box className={"w-full h-[32px] flex"}></Box>
     </Stack>

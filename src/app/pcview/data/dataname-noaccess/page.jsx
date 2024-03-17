@@ -68,7 +68,11 @@ export default function DataWithAceess() {
                 <Button variant={"text"} endIcon={<SaveAltIcon />} disabled>
                   数据导出
                 </Button>
-                <Button variant={"text"} endIcon={<InfoOutlinedIcon />}>
+                <Button
+                  variant={"text"}
+                  endIcon={<InfoOutlinedIcon />}
+                  onClick={() => router.push("/pcview/device/info/privacy")}
+                >
                   权限设置
                 </Button>
                 <Button
