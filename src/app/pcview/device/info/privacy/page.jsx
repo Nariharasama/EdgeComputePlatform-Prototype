@@ -320,9 +320,7 @@ function New({ open, handleClose, router, type }) {
 
       <DialogActions>
         <Button onClick={handleClose}>取消</Button>
-        <Button onClick={() => router.push("/pcview/setting/account")}>
-          修改
-        </Button>
+        <Button onClick={handleClose}>修改</Button>
       </DialogActions>
     </Dialog>
   );
