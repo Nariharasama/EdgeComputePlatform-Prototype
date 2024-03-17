@@ -300,9 +300,7 @@ function New({ open, handleClose, router, type }) {
 
         <DialogActions>
           <Button onClick={handleClose}>取消</Button>
-          <Button onClick={() => router.push("/pcview/setting/account")}>
-            添加
-          </Button>
+          <Button onClick={handleClose}>添加</Button>
         </DialogActions>
       </Dialog>
     );
@@ -317,7 +315,6 @@ function New({ open, handleClose, router, type }) {
           <BasicSelect />
         </Stack>
       </DialogContent>
-
       <DialogActions>
         <Button onClick={handleClose}>取消</Button>
         <Button onClick={handleClose}>修改</Button>
