@@ -253,8 +253,8 @@ function DataTable({ handleselect }) {
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell align="left">{row.device}</TableCell>
                 <TableCell align="left">{row.time}</TableCell>
+                <TableCell align="left">{row.device}</TableCell>
                 <TableCell align="left">
                   <Stack
                     direction={"row"}
