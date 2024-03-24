@@ -68,7 +68,9 @@ export default function Dashboard() {
                       </Typography>
                     </Box>
                     <IconButton>
-                      <OpenInNewIcon></OpenInNewIcon>
+                      <OpenInNewIcon
+                        onClick={() => router.push("/pcview/device")}
+                      />
                     </IconButton>
                   </Stack>
                 </Box>
@@ -110,7 +112,9 @@ export default function Dashboard() {
                       </Typography>
                     </Box>
                     <IconButton>
-                      <OpenInNewIcon></OpenInNewIcon>
+                      <OpenInNewIcon
+                        onClick={() => router.push("/pcview/data")}
+                      />
                     </IconButton>
                   </Stack>
                 </Box>
@@ -137,21 +141,37 @@ export default function Dashboard() {
                       </Typography>
                     </Box>
                     <IconButton>
-                      <SettingsIcon />
+                      <SettingsIcon
+                        onClick={() => router.push("/pcview/setting")}
+                      />
                     </IconButton>
                   </Stack>
                 </Box>
                 <Stack direction={"column"} spacing={1}>
-                  <Link>功能商城</Link>
-                  <Link>账号设置</Link>
+                  <Link
+                    className={"cursor-pointer"}
+                    onClick={() => router.push("/pcview/setting/plugin")}
+                  >
+                    功能商城
+                  </Link>
+                  <Link
+                    className={"cursor-pointer"}
+                    onClick={() => router.push("/pcview/setting/account")}
+                  >
+                    账号设置
+                  </Link>
                   <Link
                     className={"cursor-pointer"}
                     onClick={() => router.push("/pcview/device/info/rule")}
                   >
                     修改规则
                   </Link>
-                  <Link>版本更新</Link>
-                  <Link>帮助和支持</Link>
+                  <Link
+                    className={"cursor-pointer"}
+                    onClick={() => router.push("/pcview/setting/about")}
+                  >
+                    帮助和支持
+                  </Link>
                 </Stack>
               </CardContent>
             </Card>
