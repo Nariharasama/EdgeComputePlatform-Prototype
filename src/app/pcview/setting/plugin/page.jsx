@@ -133,8 +133,7 @@ export default function Plugin() {
   );
 }
 
-function DataTable({ handleselect, route }) {
-  const router = route;
+function DataTable({ handleselect }) {
   function createData(id, name, description, status) {
     return { id, name, description, status };
   }
@@ -214,12 +213,17 @@ function DataTable({ handleselect, route }) {
                         variant={"text"}
                         color={"primary"}
                         disableRipple
-                        onClick={() => router.push("/pcview/device/info")}
+                        onClick={() => alert("该操作将加载插件")}
                       >
                         安装
                       </Button>
                     ) : (
-                      <Button variant={"text"} color={"error"} disableRipple>
+                      <Button
+                        variant={"text"}
+                        color={"error"}
+                        onClick={() => alert("该操作将禁用插件")}
+                        disableRipple
+                      >
                         禁用
                       </Button>
                     )}

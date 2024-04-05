@@ -4,6 +4,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import StorageIcon from "@mui/icons-material/Storage";
 import SettingsIcon from "@mui/icons-material/Settings";
+import ComputerIcon from "@mui/icons-material/Computer";
 import { useRouter } from "next/navigation";
 export default function Sidebar({ page }) {
   const router = useRouter();
@@ -23,6 +24,16 @@ export default function Sidebar({ page }) {
             <HomeIcon
               className={"text-[32px]"}
               onClick={() => router.push("/pcview/dashboard")}
+            />
+          )}
+        </IconButton>
+        <IconButton>
+          {page === 5 ? (
+            <ComputerIcon className={"text-[32px]"} color={"primary"} />
+          ) : (
+            <ComputerIcon
+              className={"text-[32px]"}
+              onClick={() => router.push("/pcview/monitor")}
             />
           )}
         </IconButton>

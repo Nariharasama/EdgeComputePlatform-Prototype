@@ -4,8 +4,15 @@ import {
   Box,
   Button,
   Checkbox,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton,
   InputAdornment,
   MenuItem,
+  Snackbar,
   Stack,
   Table,
   TableBody,
@@ -25,8 +32,37 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import AddIcon from "@mui/icons-material/Add";
+import * as React from "react";
 
 export default function Data() {
+  const [open, setOpen] = useState(false);
+  const [open1, setOpen1] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleClose1 = () => {
+    setOpen1(false);
+  };
+  const action = (
+    <>
+      <Button size="small" onClick={() => router.push("/pcview/device/info")}>
+        前往设备
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose1}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </>
+  );
   const [select, setSelect] = useState(0);
   const placer = [{ name: "设备管理", link: "/device" }];
   const router = useRouter();
@@ -100,10 +136,24 @@ export default function Data() {
                   color={"primary"}
                   endIcon={<AddIcon />}
                   disableRipple
-                  onClick={() => router.push("device/add")}
+                  onClick={handleClickOpen}
                 >
                   添加设备
                 </Button>
+                <Login
+                  handleClose={handleClose}
+                  router={router}
+                  open={open}
+                  handleinfo={setOpen1}
+                />
+                <Snackbar
+                  open={open1}
+                  autoHideDuration={6000}
+                  onClose={handleClose1}
+                  message="设备添加成功"
+                  action={action}
+                  anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                />
                 <Box className={"w-[16px] h-full"}></Box>
               </Stack>
             </Box>
@@ -255,7 +305,12 @@ function DataTable({ handleselect, route }) {
                     >
                       规则
                     </Button>
-                    <Button variant={"text"} color={"error"} disableRipple>
+                    <Button
+                      variant={"text"}
+                      color={"error"}
+                      onClick={() => alert("该操作将删除设备")}
+                      disableRipple
+                    >
                       删除
                     </Button>
                     {row.status === "离线" && (
@@ -279,5 +334,28 @@ function DataTable({ handleselect, route }) {
         </Table>
       </TableContainer>
     </Box>
+  );
+}
+
+function Login({ open, handleClose, handleinfo }) {
+  return (
+    <Dialog open={open} onClose={handleClose}>
+      <DialogTitle>添加设备</DialogTitle>
+      <DialogContent>
+        <DialogContentText>输入设备ID以添加设备</DialogContentText>
+        <TextField autoFocus required label="ID" fullWidth variant="standard" />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>取消</Button>
+        <Button
+          onClick={() => {
+            handleClose();
+            handleinfo(true);
+          }}
+        >
+          添加
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }
