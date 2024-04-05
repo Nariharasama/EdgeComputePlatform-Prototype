@@ -124,13 +124,6 @@ export default function Data() {
                   <Box className={"grow flex"}></Box>
                   <Button
                     variant={"text"}
-                    startIcon={<SaveAltIcon />}
-                    onClick={() => alert("该操作将删除设备")}
-                  >
-                    导出报告
-                  </Button>
-                  <Button
-                    variant={"text"}
                     startIcon={<LockOutlinedIcon />}
                     onClick={() => router.push("/pcview/device/info/privacy")}
                   >
@@ -149,13 +142,6 @@ export default function Data() {
                     onClick={() => router.push("/pcview/data")}
                   >
                     数据记录
-                  </Button>
-                  <Button
-                    variant={"text"}
-                    startIcon={<DateRangeOutlinedIcon />}
-                    onClick={() => router.push("/pcview/device/info/event")}
-                  >
-                    事件记录
                   </Button>
                   <Box className={"w-[8px]"}></Box>
                 </Stack>
