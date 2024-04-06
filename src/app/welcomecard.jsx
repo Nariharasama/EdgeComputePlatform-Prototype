@@ -68,7 +68,7 @@ export default function Welcomecard() {
             >
               <Button
                 color="primary"
-                onClick={() => router.push("./pcview/dashboard")}
+                onClick={() => router.push("./pcview/login")}
                 disableRipple
                 className={"normal-case h-[32px]"}
               >

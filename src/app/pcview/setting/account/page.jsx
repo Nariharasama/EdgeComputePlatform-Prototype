@@ -20,8 +20,18 @@ import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import LogoutIcon from "@mui/icons-material/Logout";
 import * as React from "react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Account() {
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const router = useRouter();
   const placer = [
     { name: "软件设置", link: "/pcview/setting" },
@@ -108,12 +118,15 @@ export default function Account() {
                       variant={"text"}
                       color={"error"}
                       endIcon={<LogoutIcon />}
-                      onClick={() =>
-                        router.push("/pcview/setting/account-logout")
-                      }
+                      onClick={handleClickOpen}
                     >
                       退出登录
                     </Button>
+                    <Login
+                      handleClose={handleClose}
+                      router={router}
+                      open={open}
+                    />
                   </Stack>
                 </Stack>
               </Stack>
@@ -122,5 +135,23 @@ export default function Account() {
         </Box>
       </Box>
     </NavigationButton>
+  );
+}
+
+function Login({ open, handleClose, router }) {
+  return (
+    <Dialog open={open} onClose={handleClose}>
+      <DialogContent>
+        <DialogContentText>
+          是否退出当前账号？您需要重新登陆以使用软件
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>取消</Button>
+        <Button onClick={() => router.push("/pcview/login")} color={"error"}>
+          退出
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }

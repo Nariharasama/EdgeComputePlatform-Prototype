@@ -44,7 +44,12 @@ export default function About() {
               <Stack className={"w-full h-full flex"} spacing={4}>
                 <Stack direction={"row"} spacing={3} alignItems={"center"}>
                   <Typography>当前版本ver0.1.0-beta</Typography>
-                  <Button variant={"outlined"}>检查版本更新</Button>
+                  <Button
+                    variant={"outlined"}
+                    onClick={() => alert("您的软件是最新版本")}
+                  >
+                    检查版本更新
+                  </Button>
                 </Stack>
                 <Link
                   color="primary"
