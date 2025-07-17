@@ -11,7 +11,7 @@ export default function Home() {
         justifyContent={"center"}
         alignItems={"center"}
       >
-        <Card variant={"outlined"} className={"w-[720px] h-[280px]"}>
+        <Card variant={"outlined"} className={"w-[720px] h-[340px]"}>
           <Welcomecard />
         </Card>
       </Grid>

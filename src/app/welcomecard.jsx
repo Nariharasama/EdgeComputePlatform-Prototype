@@ -28,7 +28,9 @@ function Privacy() {
         {/* eslint-disable-next-line react/no-unescaped-entities */}
         Copy, reprint or any case of commercial usage without owner's permission
         of this prototype is strictly forbidden. Entering the prototype shows
-        you accept and will follow the rule.
+        you accept and will follow the rule.<br/>
+        For more details:
+        https://drive.google.com/file/d/1d85KGeE1w8CapOHcmxvaFU90_DK81W74/view?usp=drive_link
       </Alert>
     </div>
   );
